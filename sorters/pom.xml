@@ -11,7 +11,7 @@
     </parent>
 
     <!-- project coordinates -->
-    <artifactId>palindromes</artifactId>
+    <artifactId>sorter</artifactId>
     <version>1.0</version>
 
     <!-- project dependencies -->

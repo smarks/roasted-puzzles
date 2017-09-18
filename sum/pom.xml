@@ -11,7 +11,7 @@
     </parent>
 
     <!-- project coordinates -->
-    <artifactId>stacks</artifactId>
+    <artifactId>sum</artifactId>
     <version>1.0</version>
 
     <!-- project dependencies -->
