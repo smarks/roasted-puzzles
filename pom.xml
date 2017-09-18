@@ -46,7 +46,6 @@
         <module>maze</module>
         <module>palindromes</module>
         <module>stacks</module>
-        <module>sorters</module>
         <module>sum</module>
     </modules>
 
