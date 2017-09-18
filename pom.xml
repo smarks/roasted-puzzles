@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.orgamisoftware</groupId>
+
+    <groupId>com.origamisoftware</groupId>
     <artifactId>roasted-puzzles</artifactId>
-    <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>roasted-puzzles</name>
-    <url>http://maven.apache.org</url>
+    <packaging>pom</packaging>
     <build>
         <plugins>
             <plugin>
@@ -70,8 +70,12 @@
     </dependencies>
 
     <modules>
-          <module>grid</module>  <module>maze</module>  <module>palindromes</module>  <module>stacks</module>  <module>sorter</module> <module>sum</module>
-       
+        <module>grid</module>
+        <module>maze</module>
+        <module>palindromes</module>
+        <module>stacks</module>
+        <module>sorters</module>
+        <module>sum</module>
     </modules>
 
 </project>
