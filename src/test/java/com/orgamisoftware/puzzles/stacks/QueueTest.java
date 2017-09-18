@@ -1,7 +1,5 @@
 package com.orgamisoftware.puzzles.stacks;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
@@ -41,8 +39,8 @@ public class QueueTest {
         for (int count = 0; count < 3; count++) {
             array[count] = queue.get();
         }
-        assertEquals("Should be " +strings[2] + strings[2], strings[2], array[0]);
-        assertEquals("Should be " +strings[3] + strings[3], strings[3], array[1]);
+        assertEquals("Should be " + strings[2] + strings[2], strings[2], array[0]);
+        assertEquals("Should be " + strings[3] + strings[3], strings[3], array[1]);
         assertEquals("Should be " + newValue + newValue, newValue, array[2]);
 
     }
