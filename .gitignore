@@ -31,3 +31,5 @@ src/main/java/.DS_Store
 src/main/java/com/.DS_Store
 src/main/java/com/orgamisoftware/.DS_Store
 src/main/java/com/orgamisoftware/puzzles/.DS_Store
+
+*.imi
