@@ -1,4 +1,4 @@
-package com.mycompany.app;
+package com.orgamisoftware.puzzles.stacks;
 
 import java.util.ArrayList;
 import java.util.List;
