@@ -16,7 +16,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 /**
- * Unit test for simple FindPalindromes.
+ * Unit test for  FindPalindromes.
+ *
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
  */
 public class FindPalindromesTest {
 

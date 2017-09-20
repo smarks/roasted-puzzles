@@ -14,6 +14,9 @@ import java.util.List;
  * additional information about the room.
  *
  * @see RoomNode
+ *
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
+ *
  */
 public interface Vertex {
 

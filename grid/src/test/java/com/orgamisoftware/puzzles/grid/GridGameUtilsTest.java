@@ -8,6 +8,12 @@ import java.nio.charset.StandardCharsets;
 
 import static junit.framework.TestCase.assertEquals;
 
+
+/**
+ * Unit test for GridGameUtils
+ *
+ *  @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
+ */
 public class GridGameUtilsTest {
 
     private static final String INPUT_DATA =

@@ -4,6 +4,11 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
 
+/**
+ * Unit tests for FindMaxInt class
+ *
+ *  @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
+ */
 public class FindMaxIntTest {
 
     @Test

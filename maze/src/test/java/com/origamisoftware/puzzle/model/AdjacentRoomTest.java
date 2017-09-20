@@ -7,6 +7,8 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Unit test for AdjacentRoom
+ *
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
  */
 public class AdjacentRoomTest {
 

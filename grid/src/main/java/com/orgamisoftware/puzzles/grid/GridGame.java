@@ -75,7 +75,7 @@ import java.io.FileNotFoundException;
  * After each step the grid is displayed in the console.
  * After the last step how many times the largest int is present is displayed.
  *
- * @author  smarks@origamisoftware.com
+ *  @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
  *
  */
 public class GridGame {

@@ -14,6 +14,8 @@ import java.util.Map;
  * A RoomNode contains a list of adjacent rooms (edges).
  * <p>
  * A RoomNode may have contents (e.g. a plate, if not, it's contents will be labeled as RoomNode.NO_CONTENTS).
+ *
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
  */
 public class RoomNode implements Vertex {
 
@@ -38,8 +40,9 @@ public class RoomNode implements Vertex {
 
     /**
      * Constructor a RoomNode using just's its ID and name.
+     *
      * @param name a string value as provided in the data set.
-     * @param id a  string value as provided in the data set. This value should be unique.
+     * @param id   a  string value as provided in the data set. This value should be unique.
      */
     public RoomNode(String name, String id) {
         this.name = name;
@@ -62,11 +65,14 @@ public class RoomNode implements Vertex {
     /**
      * @param name specify the name of the room.
      */
-    public void setName(String name) {this.name = name;}
+    public void setName(String name) {
+        this.name = name;
+    }
 
     /**
      * Add an adjacent room to this room.
-     * @param roomNode the adjacent room
+     *
+     * @param roomNode  the adjacent room
      * @param direction the direction (cardinal point) of the adjacent room from this room
      *                  e.g.
      *                  this room -> LivingRoom
@@ -74,11 +80,10 @@ public class RoomNode implements Vertex {
      *                  direction is the cardinal point from LivingRoom to Basement
      */
     public void addEdge(RoomNode roomNode, CardinalPoint direction) {
-        neighbors.put(direction,roomNode);
+        neighbors.put(direction, roomNode);
     }
 
     /**
-     *
      * @return A list of the edges from this room.
      */
     public List<Edge> getEdges() {
@@ -92,16 +97,13 @@ public class RoomNode implements Vertex {
     }
 
     /**
-     *
      * @return the contents of the room. If the room has no contents, RoomNode.NO_CONTENTS will returned.
-     *
      */
     public String getContents() {
         return contents;
     }
 
     /**
-     *
      * @param contents specify the room's contents.
      */
     public void setContents(String contents) {
@@ -121,9 +123,9 @@ public class RoomNode implements Vertex {
 
     /**
      * Get the CardinalPoint for the direction for the given room from this room.
-     *
+     * <p>
      * e.g.
-     *
+     * <p>
      * this --> CardinalPoint --> roomNode
      *
      * @param roomNode the end point

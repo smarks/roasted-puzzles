@@ -18,6 +18,8 @@ import com.origamisoftware.puzzle.model.Vertex;
  * some  graph algorithms.
  *
  * @see AdjacentRoom
+ *
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
  */
 public interface Edge {
 

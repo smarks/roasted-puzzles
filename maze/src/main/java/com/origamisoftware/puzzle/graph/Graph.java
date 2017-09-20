@@ -18,6 +18,8 @@ import java.util.List;
  *
  * The Graph class is immutable.
  *
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
+ *
  */
 @Immutable
 public class Graph {

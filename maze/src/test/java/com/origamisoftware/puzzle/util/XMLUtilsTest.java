@@ -8,6 +8,8 @@ import static org.junit.Assert.assertNotNull;
 
 /**
  * Unit tests for methods in the XMLUtils class.
+ *
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
  */
 public class XMLUtilsTest {
 

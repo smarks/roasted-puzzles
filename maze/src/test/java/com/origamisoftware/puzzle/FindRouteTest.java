@@ -9,6 +9,8 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Unit test for the FindRoute application
+ *
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
  */
 public class FindRouteTest {
 

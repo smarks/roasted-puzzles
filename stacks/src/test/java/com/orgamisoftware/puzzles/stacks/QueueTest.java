@@ -4,6 +4,12 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
 
+
+/**
+ * Unit test to for Queue class
+ *
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
+ */
 public class QueueTest {
 
     private static String[] strings = new String[]{"a", "b", "c", "d"};

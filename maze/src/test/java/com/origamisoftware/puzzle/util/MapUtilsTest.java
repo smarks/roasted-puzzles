@@ -18,6 +18,8 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * Unit tests for the methods in the MapUtils class.
+ *
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
  */
 public class MapUtilsTest {
     private NodeList rooms;

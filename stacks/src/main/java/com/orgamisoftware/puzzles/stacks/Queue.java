@@ -7,6 +7,8 @@ import java.util.Stack;
  * Implement a Queue using two stacks
  * <p>
  * (A queue is first in first out)
+ *
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
  */
 public class Queue<T> {
 

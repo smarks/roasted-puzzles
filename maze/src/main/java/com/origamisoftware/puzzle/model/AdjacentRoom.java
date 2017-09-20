@@ -4,6 +4,8 @@ import com.origamisoftware.puzzle.graph.Edge;
 
 /**
  * Models adjoining rooms (in more general graph parlance, an edge)
+ *
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
  **/
 public class AdjacentRoom implements Edge {
 

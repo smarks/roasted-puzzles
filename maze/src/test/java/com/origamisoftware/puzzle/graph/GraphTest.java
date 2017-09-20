@@ -11,6 +11,8 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Unit test for the Graph class
+ *
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
  */
 public class GraphTest {
 
@@ -20,7 +22,7 @@ public class GraphTest {
 
     @Before
     public void setup() {
-          graph = new Graph(vertexes, edges);
+        graph = new Graph(vertexes, edges);
     }
 
     @Test

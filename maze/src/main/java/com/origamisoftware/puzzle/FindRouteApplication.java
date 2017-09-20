@@ -25,7 +25,7 @@ import java.util.Map;
  * which contains a list of items to collect. This program will determine a route through the rooms that will result in
  * collecting all the items.
  *
- * @author <a href="mailto:smarks@origamisoftware.com"></a>
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
  */
 class FindRouteApplication {
 

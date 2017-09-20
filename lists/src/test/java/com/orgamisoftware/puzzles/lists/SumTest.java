@@ -4,6 +4,11 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Unit test for Sum class
+ *
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
+ */
 public class SumTest {
 
     @Test

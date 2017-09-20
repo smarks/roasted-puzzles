@@ -13,6 +13,8 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * Unit test for the RoomNode class
+ *
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
  */
 public class RoomNodeTest {
 

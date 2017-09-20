@@ -13,6 +13,8 @@ import static org.junit.Assert.assertTrue;
 /**
  * Unit test for Dijkstra's Algorithm
  * also cribbed from source: http://www.vogella.com/tutorials/JavaAlgorithmsDijkstra/article.html
+ *
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
  */
 public class DijkstraAlgorithmTest {
 

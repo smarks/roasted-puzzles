@@ -2,6 +2,11 @@ package com.orgamisoftware.puzzles.lists;
 
 import java.util.Arrays;
 
+/**
+ * An example of get the total of the int values in an array using recursion.
+ *
+ *  @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
+ */
 public class RecursiveSum {
 
     /**
@@ -11,6 +16,7 @@ public class RecursiveSum {
      */
     public static int sum(int[] values) {
 
+        // base case
         if (values.length == 0) {
             return 0;
 
@@ -18,7 +24,7 @@ public class RecursiveSum {
             return values[0];
 
         }
-
+        // recursive case
         int[] values1 = Arrays.copyOf(values, values.length - 1);
         return values[values.length - 1] + sum(values1);
     }

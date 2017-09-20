@@ -17,9 +17,7 @@ import static java.lang.System.exit;
  * Given an arbitrary number of strings this program will examine all the possible combinations and print a list of those
  * combinations that are palindromes.
  *
- * @author Spencer Marks (smarks@origamisoftware.com)
- *         <p>
- *         Jul 2017
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
  */
 public class FindPalindromes {
 
