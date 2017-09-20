@@ -110,9 +110,9 @@ public class GridGame {
         String path = args[0];
         try {
             String[] gridData = GridGameUtils.readData(new FileInputStream(path));
-            System.out.println(GridGameUtils.countX(gridData));
+            GridGameUtils.countX(gridData);
         } catch (FileNotFoundException e) {
-            abnormalTermination(path + " is not a valid file." + incorrectArgs);
+            abnormalTermination(path + " is not a valid file. " + incorrectArgs);
         }
     }
 
