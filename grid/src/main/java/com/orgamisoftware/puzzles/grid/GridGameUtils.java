@@ -180,6 +180,8 @@ public class GridGameUtils {
      * 1 7
      * <p>
      * return the pairs of ints as an array of strings.
+     * NOTE: it reads the first line, which is should be the total number of pairs that follow
+     * and then discards it. It is not one of the strings returned.
      *
      * @param inputStream grid data
      * @return a string array of size `number of steps' where each element is a pair on ints separated by a space.

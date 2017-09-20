@@ -1,4 +1,4 @@
-package com.orgamisoftware.puzzles.sum;
+package com.orgamisoftware.puzzles.lists;
 
 import java.util.Arrays;
 
@@ -6,7 +6,7 @@ public class RecursiveSum {
 
     /**
      * Sum the elements of the array using recursion.
-     * @param values the array values to sum
+     * @param values the array values to lists
      * @return an int value which is total of all the ints inthe array
      */
     public static int sum(int[] values) {

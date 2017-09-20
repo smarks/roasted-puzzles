@@ -2,7 +2,7 @@ package com.orgamisoftware.puzzles.grid;
 
 import org.junit.Test;
 
-public class GridTest {
+public class GridGameTest {
 
 
     @Test

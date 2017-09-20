@@ -26,7 +26,6 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>21.0</version>
-            <scope>system</scope>
 
         </dependency>
         <dependency>
@@ -49,7 +48,7 @@
         <module>maze</module>
         <module>palindromes</module>
         <module>stacks</module>
-        <module>sum</module>
+        <module>lists</module>
     </modules>
 
 </project>
