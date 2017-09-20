@@ -20,7 +20,9 @@ public class SimpleQuickSort {
         }
 
         // Recursive case
-        int pivot = array[0];
+
+        // pick a pivot point that is in the middle of the list.
+        int pivot = array[array.length/2];
 
         // split array into two arrays one with values greater than pivot and one with values less than pivot
         int[] greater = Arrays.stream(array).filter(value -> (value > pivot)).toArray();
