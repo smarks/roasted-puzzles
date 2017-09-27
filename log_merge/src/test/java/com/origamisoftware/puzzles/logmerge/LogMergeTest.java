@@ -1,3 +1,5 @@
+package com.origamisoftware.puzzles.logmerge;
+
 import org.junit.Before;
 
 public class LogMergeTest {
