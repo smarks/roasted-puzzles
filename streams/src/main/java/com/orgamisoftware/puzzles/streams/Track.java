@@ -1,4 +1,4 @@
-package com.origamisoftware.puzzles.logmerge;
+package com.orgamisoftware.puzzles.streams;
 
 import java.util.Arrays;
 import java.util.List;
