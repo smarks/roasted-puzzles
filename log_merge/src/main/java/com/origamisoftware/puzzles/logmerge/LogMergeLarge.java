@@ -5,7 +5,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 import static com.origamisoftware.puzzles.logmerge.Utils.exit;
 import static com.origamisoftware.puzzles.logmerge.Utils.getLogFiles;
@@ -30,9 +29,10 @@ public class LogMergeLarge {
 
         List<Path> logs = getLogFiles(inputDirectory);
 
-        List<IncrementalFileReader> logFiles = new ArrayList<>();
+        List<LogReader> logReaders = new ArrayList<>();
 
-        logs.forEach(path -> logFiles.add(new IncrementalFileReader(path)));
+        logs.forEach(path -> logReaders.add(new LogReader(new IncrementalFileReader(path))));
+
 
 
     }
