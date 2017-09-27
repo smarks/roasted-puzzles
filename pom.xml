@@ -49,6 +49,9 @@
         <module>palindromes</module>
         <module>stacks</module>
         <module>lists</module>
+        <module>streams</module>
+        <module>log_merge</module>
+
     </modules>
 
 </project>

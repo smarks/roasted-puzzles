@@ -1,6 +1,9 @@
 package com.orgamisoftware.puzzles.lists;
 
+import java.util.List;
+import org.apache.commons.collections.ListUtils;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,7 +19,6 @@ public class SumTest {
         int[] values = new int[] {1,2,3};
         int sum = RecursiveSum.sum(values);
         assertEquals("Return value should be 6", 6, sum);
-
     }
 
     @Test
