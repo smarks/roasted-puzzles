@@ -1,5 +1,6 @@
 package com.origamisoftware.puzzles.logmerge;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Date;
 
@@ -7,15 +8,19 @@ import static com.origamisoftware.puzzles.logmerge.Utils.parseDate;
 
 public class LogReader {
 
-    private IncrementalFileReader input;
+    private BufferedReader input;
 
-    public LogReader(IncrementalFileReader input) {
+    public LogReader(BufferedReader input) {
         this.input = input;
     }
 
     public boolean hasNext() {
         try {
-            return input.ready();
+            boolean ready = input.ready();
+            if (ready == false) {
+                input.close();
+            }
+            return ready;
         } catch (IOException e) {
             throw new RuntimeException("Could not determine if there was more to read: " + e.getMessage());
         }
@@ -23,7 +28,7 @@ public class LogReader {
 
     public LogLine next() throws IOException{
         if (hasNext()) {
-        String line = input.readNextLine();
+        String line = input.readLine();
         Date date = parseDate(line);
         return new LogLine(line,date);
     } else {

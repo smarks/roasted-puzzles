@@ -1,14 +1,11 @@
 package com.origamisoftware.puzzles.logmerge;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.function.Consumer;
 
 import static com.origamisoftware.puzzles.logmerge.Utils.exit;
 import static com.origamisoftware.puzzles.logmerge.Utils.getLogFiles;
@@ -42,7 +39,14 @@ public class LogMergeLarge {
 
             List<LogReader> logReaders = new ArrayList<>();
 
-            logs.forEach(path -> logReaders.add(new LogReader(new IncrementalFileReader(path))));
+            logs.forEach(path -> {
+                try {
+                    logReaders.add(new LogReader(new BufferedReader(new FileReader(path.toString()))));
+                } catch (FileNotFoundException e) {
+                    exit(-1, "Could not find log file: " + path.toString() + " " + e.getMessage());
+                }
+            });
+
             FileWriter writer = new FileWriter(outputFilePath.toString());
 
             while (moreToRead(logReaders)) {
@@ -52,23 +56,20 @@ public class LogMergeLarge {
             }
             writer.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            exit(-1, "Could write log file: " + outputFilePath.toString() + " " + e.getMessage());
         }
 
     }
 
     private static boolean moreToRead(List<LogReader> logReaders) {
         final boolean[] hasMoreToRead = {false};
-        logReaders.forEach(new Consumer<LogReader>() {
-            @Override
-            public void accept(LogReader logReader) {
-                if (hasMoreToRead[0] == false) {
-                    if (logReader.hasNext()) {
-                        hasMoreToRead[0] = true;
-                    }
+        for (LogReader logReader : logReaders) {
+            if (hasMoreToRead[0] == false) {
+                if (logReader.hasNext()) {
+                    hasMoreToRead[0] = true;
                 }
             }
-        });
+        }
         return hasMoreToRead[0];
     }
 
@@ -76,25 +77,17 @@ public class LogMergeLarge {
 
         List<LogLine> logLines = new ArrayList<>(logReaders.size());
 
-        logReaders.forEach(new Consumer<LogReader>() {
-            @Override
-            public void accept(LogReader logReader) {
-                if (logReader.hasNext()) {
-                    try {
-                        logLines.add(logReader.next());
-                    } catch (IOException e) {
-                        throw new RuntimeException("Could not read line: " + e.getMessage());
-                    }
+        logReaders.forEach(logReader -> {
+            if (logReader.hasNext()) {
+                try {
+                    logLines.add(logReader.next());
+                } catch (IOException e) {
+                    throw new RuntimeException("Could not read line: " + e.getMessage());
                 }
             }
         });
 
-        logLines.sort(new Comparator<LogLine>() {
-            @Override
-            public int compare(LogLine o1, LogLine o2) {
-                return o1.getDate().compareTo(o2.getDate());
-            }
-        });
+        logLines.sort((o1, o2) -> o1.getDate().compareTo(o2.getDate()));
         return logLines.get(0).getLine();
 
     }
