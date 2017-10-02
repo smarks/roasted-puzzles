@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Consumer;
 
 import static com.origamisoftware.puzzles.logmerge.Utils.exit;
 import static com.origamisoftware.puzzles.logmerge.Utils.getLogFiles;
@@ -27,7 +28,12 @@ public class LogMergeLarge {
 
         Path outputFilePath = Paths.get(args[1]);
         if (Files.exists(outputFilePath)) {
-            exit(-1, "Invalid arguments. " + outputFilePath + "  already exists and won't be overwritten");
+            try {
+                Files.delete(outputFilePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            //exit(-1, "Invalid arguments. " + outputFilePath + "  already exists and won't be overwritten");
         }
 
         try {
@@ -39,25 +45,58 @@ public class LogMergeLarge {
             logs.forEach(path -> logReaders.add(new LogReader(new IncrementalFileReader(path))));
             FileWriter writer = new FileWriter(outputFilePath.toString());
 
-            String line = getNextLine(logReaders);
-            writer.write(line, 0, line.length());
-
+            while (moreToRead(logReaders)) {
+                String line = getNextLine(logReaders);
+                writer.write(line, 0, line.length());
+                System.out.println(line);
+            }
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
-    private static String getNextLine(List<LogReader> logReaders) throws IOException {
-        logReaders.sort(new Comparator<LogReader>() {
+    private static boolean moreToRead(List<LogReader> logReaders) {
+        final boolean[] hasMoreToRead = {false};
+        logReaders.forEach(new Consumer<LogReader>() {
             @Override
-            public int compare(LogReader o1, LogReader o2) {
-                return o1.compareTo(o2);
+            public void accept(LogReader logReader) {
+                if (hasMoreToRead[0] == false) {
+                    if (logReader.hasNext()) {
+                        hasMoreToRead[0] = true;
+                    }
+                }
             }
         });
-        String currentLine = logReaders.get(0).getCurrentLine();
-        logReaders.get(0).incrementLine();
-        return currentLine;
+        return hasMoreToRead[0];
+    }
+
+    private static String getNextLine(List<LogReader> logReaders) throws IOException {
+
+        List<LogLine> logLines = new ArrayList<>(logReaders.size());
+
+        logReaders.forEach(new Consumer<LogReader>() {
+            @Override
+            public void accept(LogReader logReader) {
+                if (logReader.hasNext()) {
+                    try {
+                        logLines.add(logReader.next());
+                    } catch (IOException e) {
+                        throw new RuntimeException("Could not read line: " + e.getMessage());
+                    }
+                }
+            }
+        });
+
+        logLines.sort(new Comparator<LogLine>() {
+            @Override
+            public int compare(LogLine o1, LogLine o2) {
+                return o1.getDate().compareTo(o2.getDate());
+            }
+        });
+        return logLines.get(0).getLine();
+
     }
 
 }

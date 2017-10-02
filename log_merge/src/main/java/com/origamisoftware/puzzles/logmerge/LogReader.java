@@ -5,34 +5,29 @@ import java.util.Date;
 
 import static com.origamisoftware.puzzles.logmerge.Utils.parseDate;
 
-public class LogReader implements Comparable<LogReader> {
+public class LogReader {
 
     private IncrementalFileReader input;
-    private String currentLine;
-    private Date date;
 
     public LogReader(IncrementalFileReader input) {
         this.input = input;
     }
 
-    public String getCurrentLine() throws IOException {
-        if (currentLine == null) {
-            currentLine = input.readNextLine();
+    public boolean hasNext() {
+        try {
+            return input.ready();
+        } catch (IOException e) {
+            throw new RuntimeException("Could not determine if there was more to read: " + e.getMessage());
         }
-        return currentLine;
     }
 
-    public void incrementLine() throws IOException {
-            currentLine = input.readNextLine();
-     }
-
-    public Date getDate() {
-        date = parseDate(currentLine);
-        return date;
-    }
-
-    @Override
-    public int compareTo(LogReader o) {
-        return this.date.compareTo(o.getDate());
-    }
+    public LogLine next() throws IOException{
+        if (hasNext()) {
+        String line = input.readNextLine();
+        Date date = parseDate(line);
+        return new LogLine(line,date);
+    } else {
+            throw new RuntimeException("No more data to read, call hasNext() before call next() to avoid this error in the future");
+        }
+}
 }

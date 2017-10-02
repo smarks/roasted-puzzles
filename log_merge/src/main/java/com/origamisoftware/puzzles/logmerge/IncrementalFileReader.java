@@ -38,4 +38,7 @@ public class IncrementalFileReader {
     }
 
 
+     boolean ready() throws IOException {
+        return getBufferedReader().ready();
+    }
 }
