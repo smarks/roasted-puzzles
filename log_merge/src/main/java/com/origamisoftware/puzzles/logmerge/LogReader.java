@@ -5,7 +5,7 @@ import java.util.Date;
 
 import static com.origamisoftware.puzzles.logmerge.Utils.parseDate;
 
-public class LogReader implements Comparable<LogReader>{
+public class LogReader implements Comparable<LogReader> {
 
     private IncrementalFileReader input;
     private String currentLine;
@@ -15,10 +15,16 @@ public class LogReader implements Comparable<LogReader>{
         this.input = input;
     }
 
-    private String getCurrentLine() throws IOException {
-        currentLine = input.readNextLine();
+    public String getCurrentLine() throws IOException {
+        if (currentLine == null) {
+            currentLine = input.readNextLine();
+        }
         return currentLine;
     }
+
+    public void incrementLine() throws IOException {
+            currentLine = input.readNextLine();
+     }
 
     public Date getDate() {
         date = parseDate(currentLine);

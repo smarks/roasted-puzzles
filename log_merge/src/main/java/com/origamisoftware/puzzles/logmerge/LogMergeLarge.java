@@ -1,9 +1,12 @@
 package com.origamisoftware.puzzles.logmerge;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import static com.origamisoftware.puzzles.logmerge.Utils.exit;
@@ -22,19 +25,39 @@ public class LogMergeLarge {
             exit(-1, "Invalid arguments. " + inputDirectory + "  is not a valid directory");
         }
 
-        Path outputFile = Paths.get(args[1]);
-        if (Files.exists(outputFile)) {
-            exit(-1, "Invalid arguments. " + outputFile + "  already exists and won't be overwritten");
+        Path outputFilePath = Paths.get(args[1]);
+        if (Files.exists(outputFilePath)) {
+            exit(-1, "Invalid arguments. " + outputFilePath + "  already exists and won't be overwritten");
         }
 
-        List<Path> logs = getLogFiles(inputDirectory);
+        try {
 
-        List<LogReader> logReaders = new ArrayList<>();
+            List<Path> logs = getLogFiles(inputDirectory);
 
-        logs.forEach(path -> logReaders.add(new LogReader(new IncrementalFileReader(path))));
+            List<LogReader> logReaders = new ArrayList<>();
 
+            logs.forEach(path -> logReaders.add(new LogReader(new IncrementalFileReader(path))));
+            FileWriter writer = new FileWriter(outputFilePath.toString());
 
+            String line = getNextLine(logReaders);
+            writer.write(line, 0, line.length());
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private static String getNextLine(List<LogReader> logReaders) throws IOException {
+        logReaders.sort(new Comparator<LogReader>() {
+            @Override
+            public int compare(LogReader o1, LogReader o2) {
+                return o1.compareTo(o2);
+            }
+        });
+        String currentLine = logReaders.get(0).getCurrentLine();
+        logReaders.get(0).incrementLine();
+        return currentLine;
     }
 
 }
