@@ -1,4 +1,7 @@
-package com.origamisoftware.puzzles.logmerge;
+package com.origamisoftware.puzzles.logmerge.apps;
+
+import com.origamisoftware.puzzles.logmerge.model.LogLine;
+import com.origamisoftware.puzzles.logmerge.model.LogReader;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -7,8 +10,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.origamisoftware.puzzles.logmerge.Utils.exit;
-import static com.origamisoftware.puzzles.logmerge.Utils.getLogFiles;
+import static com.origamisoftware.puzzles.logmerge.util.Utils.exit;
+import static com.origamisoftware.puzzles.logmerge.util.Utils.getLogFiles;
 
 public class LogMergeLarge {
 

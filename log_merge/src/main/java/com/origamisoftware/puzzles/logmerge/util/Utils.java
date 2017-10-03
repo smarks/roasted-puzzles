@@ -1,4 +1,4 @@
-package com.origamisoftware.puzzles.logmerge;
+package com.origamisoftware.puzzles.logmerge.util;
 
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
@@ -22,7 +22,7 @@ public class Utils {
      *                          denote normal execution.
      * @param diagnosticMessage a helpful message to the user
      */
-    static void exit(int exitCode, String diagnosticMessage) {
+    public static void exit(int exitCode, String diagnosticMessage) {
         System.out.println(diagnosticMessage);
         if (exitCode < 0) {
             System.out.println("Abnormal Program Termination.");
@@ -42,7 +42,7 @@ public class Utils {
      * @param inputDirectory the directory to log for log files.
      * @return a list of log files to parse
      */
-    static List<Path> getLogFiles(Path inputDirectory) {
+    public  static List<Path> getLogFiles(Path inputDirectory) {
         List<Path> fileNames = new ArrayList<>();
         // use try with resources
         try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(inputDirectory)) {

@@ -1,4 +1,4 @@
-package com.origamisoftware.puzzles.logmerge;
+package com.origamisoftware.puzzles.logmerge.model;
 
 import java.util.Date;
 

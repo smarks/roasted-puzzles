@@ -1,10 +1,10 @@
-package com.origamisoftware.puzzles.logmerge;
+package com.origamisoftware.puzzles.logmerge.model;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Date;
 
-import static com.origamisoftware.puzzles.logmerge.Utils.parseDate;
+import static com.origamisoftware.puzzles.logmerge.util.Utils.parseDate;
 
 public class LogReader {
 
@@ -26,13 +26,13 @@ public class LogReader {
         }
     }
 
-    public LogLine next() throws IOException{
+    public LogLine next() throws IOException {
         if (hasNext()) {
-        String line = input.readLine();
-        Date date = parseDate(line);
-        return new LogLine(line,date);
-    } else {
+            String line = input.readLine();
+            Date date = parseDate(line);
+            return new LogLine(line, date);
+        } else {
             throw new RuntimeException("No more data to read, call hasNext() before call next() to avoid this error in the future");
         }
-}
+    }
 }

@@ -1,5 +1,6 @@
 package com.origamisoftware.puzzles.logmerge;
 
+import com.origamisoftware.puzzles.logmerge.util.Utils;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.Assertion;

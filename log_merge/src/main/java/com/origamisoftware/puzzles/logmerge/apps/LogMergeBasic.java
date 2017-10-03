@@ -1,14 +1,12 @@
-package com.origamisoftware.puzzles.logmerge;
+package com.origamisoftware.puzzles.logmerge.apps;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.SortedMap;
@@ -17,15 +15,13 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
-import static com.origamisoftware.puzzles.logmerge.Utils.exit;
-import static com.origamisoftware.puzzles.logmerge.Utils.getLogFiles;
+import static com.origamisoftware.puzzles.logmerge.util.Utils.exit;
+import static com.origamisoftware.puzzles.logmerge.util.Utils.getLogFiles;
 
 public class LogMergeBasic {
 
 
     private static SortedMap<Date, String> dateStringSortedMap = new ConcurrentSkipListMap<>();
-
-
 
 
     /**
@@ -34,7 +30,7 @@ public class LogMergeBasic {
      * @param log the file to read
      */
     private static SortedMap<Date, String> parseLog(Path log) {
-         SimpleDateFormat dateFormat = new SimpleDateFormat(
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
                 "yyyy-MM-dd hh:mm:ss");//format of date and time you have
 
         try (Stream<String> stream = Files.lines(log)) {
