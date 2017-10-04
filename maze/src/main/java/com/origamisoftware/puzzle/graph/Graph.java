@@ -8,18 +8,17 @@ import java.util.List;
 
 /**
  * A Graph is a collection of RoomNodes (vertexes) and Edges.
- *
+ * <p>
  * An edge is basically the line between two vertexes (or RoomNodes).
- *
+ * <p>
  * This class will contain all the RoomNodes and Edges as parsed from the input data.
  * (The map.xml file)
- *
+ * <p>
  * This models an unweighted graph, connected graph.
- *
+ * <p>
  * The Graph class is immutable.
  *
  * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
- *
  */
 @Immutable
 public class Graph {
@@ -38,15 +37,14 @@ public class Graph {
      * Create a new Graph instance.
      *
      * @param vertexes the number of rooms (aka Nodes, aka vertexes)
-     * @param edges the 'lines' or routes contenting the rooms.
+     * @param edges    the 'lines' or routes contenting the rooms.
      */
     public Graph(List<Vertex> vertexes, List<Edge> edges) {
         this.vertexes = vertexes;
         this.edges = edges;
-     }
+    }
 
     /**
-     *
      * @return the list of RoomNode associated with this Graph
      */
     List<Vertex> getVertexes() {
@@ -54,13 +52,11 @@ public class Graph {
     }
 
     /**
-     *
      * @return the list of Edges associated with this Graph
      */
     List<Edge> getEdges() {
         return edges;
     }
-
 
 
 }

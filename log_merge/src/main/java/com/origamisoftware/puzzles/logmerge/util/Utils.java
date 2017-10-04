@@ -42,7 +42,7 @@ public class Utils {
      * @param inputDirectory the directory to log for log files.
      * @return a list of log files to parse
      */
-    public  static List<Path> getLogFiles(Path inputDirectory) {
+    public static List<Path> getLogFiles(Path inputDirectory) {
         List<Path> fileNames = new ArrayList<>();
         // use try with resources
         try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(inputDirectory)) {

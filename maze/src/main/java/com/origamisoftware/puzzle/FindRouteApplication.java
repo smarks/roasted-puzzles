@@ -116,8 +116,8 @@ class FindRouteApplication {
         rooms.add(startingPoint);
         for (String item : itemsToFind) {
             try {
-                System.out.println("Starting in the "+ startingPoint.getName() +  " I begin looking for " + item);
-                rooms = MapUtils.findShortestPath(roomsById,roomByContents, startingPoint, item);
+                System.out.println("Starting in the " + startingPoint.getName() + " I begin looking for " + item);
+                rooms = MapUtils.findShortestPath(roomsById, roomByContents, startingPoint, item);
                 System.out.println("I collect the " + item + "\n");
                 // the room to start from will be the room where there previous item was found.
                 startingPoint = Iterables.getLast(rooms);

@@ -32,7 +32,7 @@ public class FindRouteTest {
     @Test
     public void verifyIncorrectArguments() {
         exit.expectSystemExitWithStatus(-1);
-        FindRouteApplication.main(new String[]{"-map","foo","-snap","caller"});
+        FindRouteApplication.main(new String[]{"-map", "foo", "-snap", "caller"});
         assertEquals(" -map VAL : Specify the full path to an xml that describes the map\n" +
                 " -scenario VAL : Specify the full path to text file that describes a search\n" +
                 "                 scenario", systemErrRule.getLog());
@@ -40,11 +40,11 @@ public class FindRouteTest {
 
     @Test(expected = IllegalStateException.class)
     public void verifyCorrectArgumentsBadPaths() {
-        FindRouteApplication.main(new String[]{"-map","map.xml","-scenario","caller"});
+        FindRouteApplication.main(new String[]{"-map", "map.xml", "-scenario", "caller"});
     }
 
     @Test()
     public void verifyCorrectArgumentsGoodPaths() {
-        FindRouteApplication.main(new String[]{"-map","./data/map.xml","-scenario","./data/scenario.txt"});
+        FindRouteApplication.main(new String[]{"-map", "./data/map.xml", "-scenario", "./data/scenario.txt"});
     }
 }

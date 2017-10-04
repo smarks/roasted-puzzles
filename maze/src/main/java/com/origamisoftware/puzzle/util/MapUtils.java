@@ -11,16 +11,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Utilities for creating a map model from the XML data and navigating that map.
@@ -65,7 +56,7 @@ public class MapUtils {
      * Convert an XML data structure (Node) to our model of a room.
      *
      * @param roomMapById a map of all the rooms by id
-     * @param node the XML data structure
+     * @param node        the XML data structure
      * @return a RoomNode
      */
     private static RoomNode node2RoomNode(Map<String, RoomNode> roomMapById, Node node) {
@@ -166,7 +157,7 @@ public class MapUtils {
                                                   Map<String, RoomNode> roomsByContents, RoomNode startingPoint,
                                                   String itemToFind) throws InvalidGraphSearchParametersException {
 
-         if (!roomsByContents.containsKey(itemToFind)) {
+        if (!roomsByContents.containsKey(itemToFind)) {
             throw new InvalidGraphSearchParametersException("The item " + itemToFind + " is not in any of the rooms");
         }
 
@@ -183,7 +174,7 @@ public class MapUtils {
         DijkstraAlgorithm dijkstra = new DijkstraAlgorithm(graph);
         dijkstra.execute(startingPoint);
         LinkedList<Vertex> path = dijkstra.getPath(roomThatContains);
-        if (path == null){
+        if (path == null) {
             throw new InvalidGraphSearchParametersException("The graph is not connected.");
         }
         int numberOfRooms = path.size();

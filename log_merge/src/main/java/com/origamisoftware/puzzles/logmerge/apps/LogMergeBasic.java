@@ -26,6 +26,8 @@ import static com.origamisoftware.puzzles.logmerge.util.Utils.getLogFiles;
  * if the amount of data is very large.
  * <p>
  * This program only has basic exception handling.
+ *
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
  */
 public class LogMergeBasic {
 

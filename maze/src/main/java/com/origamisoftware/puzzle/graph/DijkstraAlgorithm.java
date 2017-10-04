@@ -2,14 +2,7 @@ package com.origamisoftware.puzzle.graph;
 
 import com.origamisoftware.puzzle.model.Vertex;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * This class finds the shortest path between to nodes in a connected graph.

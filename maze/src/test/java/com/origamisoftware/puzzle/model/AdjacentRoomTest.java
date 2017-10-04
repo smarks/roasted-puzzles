@@ -25,12 +25,12 @@ public class AdjacentRoomTest {
 
     @Test
     public void testGetDestination() {
-         assertEquals("destination matches", destination,adjacentRoom.getDestination());
+        assertEquals("destination matches", destination, adjacentRoom.getDestination());
     }
 
     @Test
     public void testGetSource() {
-        assertEquals("source matches", source,adjacentRoom.getSource());
+        assertEquals("source matches", source, adjacentRoom.getSource());
     }
 
     @Test

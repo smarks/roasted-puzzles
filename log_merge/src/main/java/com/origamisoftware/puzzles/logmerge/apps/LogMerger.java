@@ -13,6 +13,9 @@ import java.util.List;
 import static com.origamisoftware.puzzles.logmerge.util.Utils.exit;
 import static com.origamisoftware.puzzles.logmerge.util.Utils.getLogFiles;
 
+/**
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
+ */
 public class LogMerger {
 
     public static void main(String[] args) {

@@ -5,12 +5,13 @@ import java.util.Arrays;
 /**
  * An example of get the total of the int values in an array using recursion.
  *
- *  @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
  */
 public class RecursiveSum {
 
     /**
      * Sum the elements of the array using recursion.
+     *
      * @param values the array values to lists
      * @return an int value which is total of all the ints inthe array
      */

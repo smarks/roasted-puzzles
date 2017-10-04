@@ -5,7 +5,8 @@ import java.util.Arrays;
 /**
  * A couple different ways to find the largest int in a list of ints.
  * <p>
- *  @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
+ *
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
  */
 public class FindMaxInt {
 

@@ -2,11 +2,7 @@ package com.origamisoftware.puzzle.model;
 
 import com.origamisoftware.puzzle.graph.Edge;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * The RoomNode is a specific implementation of a Vertex or Node which models a room in the adventurer's map.

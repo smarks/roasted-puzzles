@@ -15,13 +15,13 @@ public class XMLUtilsTest {
 
 
     @Test
-    public void testParseDocumentPositive() throws Exception{
+    public void testParseDocumentPositive() throws Exception {
         Document document = XMLUtils.parseXML("src/test/test_data/good-map.xml");
-        assertNotNull("Verify document was returned",document);
+        assertNotNull("Verify document was returned", document);
     }
 
     @Test(expected = SAXParseException.class)
-    public void testParseDocumentDataDoesMatchDTD() throws Exception{
-      XMLUtils.parseXML("src/test/test_data/invalid-map.xml");
-     }
+    public void testParseDocumentDataDoesMatchDTD() throws Exception {
+        XMLUtils.parseXML("src/test/test_data/invalid-map.xml");
+    }
 }

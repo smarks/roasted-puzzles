@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 /**
  * Collection of general purpose utilities use by the GameGrid code
  *
- *  @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
+ * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
  */
 public class GridGameUtils {
 

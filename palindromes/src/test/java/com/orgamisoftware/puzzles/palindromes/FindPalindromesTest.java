@@ -27,9 +27,9 @@ public class FindPalindromesTest {
     private static final Set<String> realDataSet = new HashSet<String>(Arrays.asList(realData));
     private static final String simpleData[] = new String[]{"a", "b", "c", "d"};
     private static final Set<String> simpleDataSet = new HashSet<String>(Arrays.asList(simpleData));
-    private static final String noPalindromesHereData[] = new String[]{"Mark","Spencer"};
+    private static final String noPalindromesHereData[] = new String[]{"Mark", "Spencer"};
 
-    private static String[] knownPalindromes = new String[] {
+    private static String[] knownPalindromes = new String[]{
             "",
             " ",
             "  ",
@@ -159,7 +159,7 @@ public class FindPalindromesTest {
         exit.expectSystemExitWithStatus(0);
         exit.checkAssertionAfterwards(new Assertion() {
             public void checkAssertion() {
-                assertEquals("No palindromes found.\n",systemOutRule.getLog());
+                assertEquals("No palindromes found.\n", systemOutRule.getLog());
             }
         });
         FindPalindromes.main(noPalindromesHereData);

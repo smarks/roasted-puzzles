@@ -29,6 +29,7 @@ public class UtilsTest {
         });
         Utils.exit(0, "OK, then");
     }
+
     @Test
     public void testExitNegative() {
         exit.expectSystemExitWithStatus(-1);

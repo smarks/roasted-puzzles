@@ -7,9 +7,7 @@ import org.junit.Test;
 import java.util.Collection;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Unit test for the RoomNode class
@@ -73,19 +71,19 @@ public class RoomNodeTest {
         roomNode.addEdge(west, CardinalPoint.WEST);
         Collection<RoomNode> neighbors = roomNode.getNeighbors();
         // these asserts verify we got back the expected results.
-        assertTrue("removed a neighbor",  neighbors.remove(east));
-        assertTrue("removed a neighbor",  neighbors.remove(west));
-        assertTrue("not more neighbors",  neighbors.isEmpty());
-     }
+        assertTrue("removed a neighbor", neighbors.remove(east));
+        assertTrue("removed a neighbor", neighbors.remove(west));
+        assertTrue("not more neighbors", neighbors.isEmpty());
+    }
 
 
     @Test
     public void testWhichWayIsThisRoom() {
         RoomNode east = new RoomNode("east", "east");
         roomNode.addEdge(east, CardinalPoint.EAST);
-        assertEquals("verify direction",CardinalPoint.EAST,roomNode.whichWayIsThisRoom(east));
-        east.addEdge(roomNode,CardinalPoint.WEST);
-        assertEquals("verify direction",CardinalPoint.WEST,east.whichWayIsThisRoom(roomNode));
+        assertEquals("verify direction", CardinalPoint.EAST, roomNode.whichWayIsThisRoom(east));
+        east.addEdge(roomNode, CardinalPoint.WEST);
+        assertEquals("verify direction", CardinalPoint.WEST, east.whichWayIsThisRoom(roomNode));
     }
 
     @Test
@@ -93,7 +91,7 @@ public class RoomNodeTest {
         RoomNode east1 = new RoomNode("east", "east");
         RoomNode east2 = new RoomNode("east", "east");
         assertEquals("hashcode should match", east1.hashCode(), east2.hashCode());
-        assertFalse("hashcode should not match", new RoomNode("west","12").hashCode() == (east2.hashCode()));
+        assertFalse("hashcode should not match", new RoomNode("west", "12").hashCode() == (east2.hashCode()));
     }
 
     @Test
@@ -101,6 +99,6 @@ public class RoomNodeTest {
         RoomNode east1 = new RoomNode("east", "east");
         RoomNode east2 = new RoomNode("east", "east");
         assertTrue("equals should match", east1.equals(east2));
-        assertFalse("equals should not match", new RoomNode("west","12").equals(east2));
+        assertFalse("equals should not match", new RoomNode("west", "12").equals(east2));
     }
 }

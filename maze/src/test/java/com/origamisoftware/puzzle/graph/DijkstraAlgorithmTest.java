@@ -152,12 +152,12 @@ public class DijkstraAlgorithmTest {
         assertNotNull(path);
         assertTrue(path.size() > 0);
 
-        String[]  expectedResults = new String[]{ "Node_0","Node_2","Node_7","Node_9", "Node_10"};
+        String[] expectedResults = new String[]{"Node_0", "Node_2", "Node_7", "Node_9", "Node_10"};
         List<String> results = new ArrayList<>(expectedResults.length);
         for (Vertex vertex : path) {
-          results.add(vertex.toString());
+            results.add(vertex.toString());
         }
-        for (String expectedResult: expectedResults) {
+        for (String expectedResult : expectedResults) {
             results.remove(expectedResult);
         }
         assertTrue("Got expected results ", results.isEmpty());

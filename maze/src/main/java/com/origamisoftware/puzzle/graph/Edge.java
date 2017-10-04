@@ -17,17 +17,16 @@ import com.origamisoftware.puzzle.model.Vertex;
  * This value is used in weighted graphs and is required by
  * some  graph algorithms.
  *
- * @see AdjacentRoom
- *
  * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
+ * @see AdjacentRoom
  */
 public interface Edge {
 
     /**
      * The starting point of the  edge. An Edge is
-     *
+     * <p>
      * A --- B
-     *
+     * <p>
      * This is the A value.
      *
      * @return a room node
@@ -36,9 +35,9 @@ public interface Edge {
 
     /**
      * The far end of the edge. An Edge is
-     *
+     * <p>
      * A --- B
-     *
+     * <p>
      * This is the B value.
      *
      * @return a room node

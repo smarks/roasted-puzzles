@@ -27,7 +27,7 @@ public class Queue<T> {
     public T get() {
         if (out.isEmpty()) {
             int size = in.size();
-            for (int index = 0; index < size; index++){
+            for (int index = 0; index < size; index++) {
                 out.add(in.pop());
             }
         }
