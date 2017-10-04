@@ -13,7 +13,7 @@ import java.util.List;
 import static com.origamisoftware.puzzles.logmerge.util.Utils.exit;
 import static com.origamisoftware.puzzles.logmerge.util.Utils.getLogFiles;
 
-public class LogMergeLarge {
+public class LogMerger {
 
     public static void main(String[] args) {
 
@@ -28,12 +28,7 @@ public class LogMergeLarge {
 
         Path outputFilePath = Paths.get(args[1]);
         if (Files.exists(outputFilePath)) {
-            try {
-                Files.delete(outputFilePath);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            //exit(-1, "Invalid arguments. " + outputFilePath + "  already exists and won't be overwritten");
+            exit(-1, "Invalid arguments. " + outputFilePath + "  already exists and won't be overwritten");
         }
 
         try {
@@ -57,7 +52,9 @@ public class LogMergeLarge {
                 writer.write(line, 0, line.length());
                 System.out.println(line);
             }
+
             writer.close();
+
         } catch (IOException e) {
             exit(-1, "Could write log file: " + outputFilePath.toString() + " " + e.getMessage());
         }
@@ -77,7 +74,6 @@ public class LogMergeLarge {
     }
 
     private static String getNextLine(List<LogReader> logReaders) throws IOException {
-
         List<LogLine> logLines = new ArrayList<>(logReaders.size());
 
         logReaders.forEach(logReader -> {

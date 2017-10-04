@@ -18,32 +18,50 @@ import java.util.stream.Stream;
 import static com.origamisoftware.puzzles.logmerge.util.Utils.exit;
 import static com.origamisoftware.puzzles.logmerge.util.Utils.getLogFiles;
 
+
+/**
+ * Simple solution to the problem of merging log files described in the ReadMe.md file.
+ * This solution does not reply on the individual logs being sorted by date, but since it
+ * reads all the data into a hashmap which is stored in memory it can run out of memory
+ * if the amount of data is very large.
+ * <p>
+ * This program only has basic exception handling.
+ */
 public class LogMergeBasic {
-
-
-    private static SortedMap<Date, String> dateStringSortedMap = new ConcurrentSkipListMap<>();
 
 
     /**
      * Read each line of the file.
+     * <p>
+     * This method will terminate the program (in a controllled way) if an <CODE>ParseException</CODE> or an <CODE>IOException</CODE>
+     * is encountered.
      *
-     * @param log the file to read
+     * @param log                 the file to read
+     * @param dateStringSortedMap the data structure to store the lines of the log file in.
      */
-    private static SortedMap<Date, String> parseLog(Path log) {
+    private static SortedMap<Date, String> parseLog(Path log, SortedMap<Date, String> dateStringSortedMap) {
+
         SimpleDateFormat dateFormat = new SimpleDateFormat(
                 "yyyy-MM-dd hh:mm:ss");//format of date and time you have
 
+        /* Read each line of the file using a stream which can handle large files
+         * parse the date of the line
+         * put the line in the map sorted by date.
+         */
         try (Stream<String> stream = Files.lines(log)) {
 
             stream.forEach(new Consumer<String>() {
                 @Override
-                public void accept(String s) {
-                    int index = s.indexOf(",");
+                public void accept(String line) {
+                    // the date part of the string stops at ','
+                    int index = line.indexOf(",");
+                    // make sure ',' was found
                     if (index != -1) {
-                        String timeStampStr = s.substring(0, index);
+                        // grab the date part of the string
+                        String timeStampStr = line.substring(0, index);
                         try {
                             Date timeStamp = dateFormat.parse(timeStampStr);
-                            dateStringSortedMap.put(timeStamp, s);
+                            dateStringSortedMap.put(timeStamp, line);
                         } catch (ParseException e) {
                             exit(-1, "Could not parse date: " + timeStampStr + " " + e.getMessage());
                         }
@@ -69,10 +87,16 @@ public class LogMergeBasic {
      * Note: a log file is defined a any file ending with .log
      * <p>
      * The second out argument in the output
+     * <p>
+     * This method will terminate the program in a controllled way if an <CODE>ParseException</CODE> or an <CODE>IOException</CODE>
+     * is encountered.
      *
-     * @param args
+     * @param args an array of strings. Size must be 2. The first arg must be a directory. The second arg is the path
+     *             to output file.  If the output file already exists, it won't be overwritten. Instead the program
+     *             will terminate with an error message.
      */
     public static void main(String[] args) {
+        // sanity  check input args
         if (args.length != 2) {
             exit(-1, "Invalid arguments. Provide directory of log files and output file.");
         }
@@ -89,13 +113,24 @@ public class LogMergeBasic {
 
         List<Path> logs = getLogFiles(inputDirectory);
 
+        SortedMap<Date, String> dateStringSortedMap = new ConcurrentSkipListMap<>();
+
         for (Path log : logs) {
-            parseLog(log);
+            parseLog(log, dateStringSortedMap);
         }
 
+        // handy try with resources
         try (BufferedWriter writer = Files.newBufferedWriter(outputFile)) {
 
+            // iterate the map by date writing each line
             dateStringSortedMap.forEach(new BiConsumer<Date, String>() {
+                /**
+                 * Write contents to output file.
+                 * If an <CODE>IOException</CODE> is encountered the program will terminate with an error message.
+                 *
+                 * @param date     the date of the log line  - not used
+                 * @param contents a log line
+                 */
                 @Override
                 public void accept(Date date, String contents) {
                     try {
