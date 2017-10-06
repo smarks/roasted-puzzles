@@ -96,18 +96,19 @@ public class LogMergeBasic {
     }
 
     /**
-     * Given one more log files in the format of:
+     *
+     * This program takes two arguments. The directory where one or more log files are located and output file.
+     *
+     * The log files must be in this format:
      * <p>
      * 2017-04-26 12:00:04,799  DEBUG - Lorem ipsum dolor sit amet, consectetur adipiscing elit
      * <p>
      * This program will collect each line and write them sorted by date into a single file.
      * <p>
-     * This program takes two arguments. The directory where one or more log files are located.
      * Note: a log file is defined a any file ending with .log
      * <p>
-     * The second out argument in the output
      * <p>
-     * This method will terminate the program in a controllled way if an <CODE>ParseException</CODE> or an <CODE>IOException</CODE>
+     * This method will terminate the program in a controlled way if an <CODE>ParseException</CODE> or an <CODE>IOException</CODE>
      * is encountered.
      *
      * @param args an array of strings. Size must be 2. The first arg must be a directory. The second arg is the path

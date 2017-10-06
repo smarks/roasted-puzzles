@@ -31,12 +31,49 @@ import static com.origamisoftware.puzzles.logmerge.util.Utils.exit;
 import static com.origamisoftware.puzzles.logmerge.util.Utils.getLogFiles;
 
 /**
+ * A more complex / object oriented  solution to the problem of merging log files described in the ReadMe.md file.
+ * This solution DOES  reply on the individual logs being sorted by date, since it only reads one line of each log
+ * file at a time and writes output one line at a time, it can process a "a very large number" (tm) of log files
+ * without running out of resources.
+ * <p>
+ * Here is the basic algorithm:
+ * <p>
+ * 0. read a line from all files
+ * 1. sort lines by date
+ * 2. write earliest entry
+ * 3. read line from file whose line was just written or remove it from list of files if no data remains
+ * 4. while there is more data in any of the files go to step 1
+ * <p>
+ * <p>
+ * This program only has basic exception handling.
+ *
  * @author <A href="mailto:smarks@origamisoftware.com">Spencer A  Marks</A>
  */
 public class LogMerger {
 
+    /**
+     *
+     * This program takes two arguments. The directory where one or more log files are located and output file.
+     *
+     * The log files must be in this format:
+     * <p>
+     * 2017-04-26 12:00:04,799  DEBUG - Lorem ipsum dolor sit amet, consectetur adipiscing elit
+     * <p>
+     * This program will collect each line and write them sorted by date into a single file.
+     * <p>
+     * Note: a log file is defined a any file ending with .log
+     * <p>
+     * <p>
+     * This method will terminate the program in a controlled way if an <CODE>ParseException</CODE> or an <CODE>IOException</CODE>
+     * is encountered.
+     *
+     * @param args an array of strings. Size must be 2. The first arg must be a directory. The second arg is the path
+     *             to output file.  If the output file already exists, it won't be overwritten. Instead the program
+     *             will terminate with an error message.
+     */
     public static void main(String[] args) {
 
+        // Sanity check input args
         if (args.length != 2) {
             exit(-1, "Invalid arguments. Provide directory of log files and output file.");
         }
@@ -75,7 +112,7 @@ public class LogMerger {
 
             writer.close();
 
-        } catch (IOException e) {
+        } catch (Throwable e) {
             exit(-1, "Could write log file: " + outputFilePath.toString() + " " + e.getMessage());
         }
 
